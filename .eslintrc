@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2020": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint-config-ts",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "plugins": [
+    "import",
+    "react",
+    "prettier",
+    "jsx-a11y"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
+  },
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "import/extensions": "off",
+    "@typescript-eslint/no-use-before-define": "off"
+  }
+}
