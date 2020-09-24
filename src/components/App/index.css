@@ -1,0 +1,61 @@
+@import '../../vendor/reset.css/reset.css';
+
+html,
+body {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  background: #ebeef3;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 16px 22px 13px 22px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wrapper__header {
+  margin-bottom: 26px;
+}
+
+.header__title {
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.controls {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.btn {
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+}
+
+.btn-signin {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.controls__btn-signin {
+  margin-right: 19px;
+}
+
+.btn-signout {
+  color: #52c41a;
+  border: 1px solid #52c41a;
+  padding: 6px 18px 10px 18px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
