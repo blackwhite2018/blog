@@ -2,6 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 
 import Tag from '../Tag';
+import './index.css';
 import { TagsTypes } from '../../types';
 
 const Tags: React.FC<TagsTypes> = ({ tagList }) => (

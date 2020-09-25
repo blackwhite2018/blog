@@ -6,6 +6,8 @@
   filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .article-info__header {
@@ -32,24 +34,9 @@
   margin-right: 13px;
 }
 
-.tags {
-  margin-bottom: 8px;
-}
-
-.tags__item {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
-  padding: 2px 3px 5px 6px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.tags__item:not(:last-child) {
-  margin-right: 8px;
+.article-info__text {
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .article-info__desc {

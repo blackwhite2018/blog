@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+
 import { Article as ArticleType } from '../../types';
 import Tags from '../Tags';
 import './index.css';
 // @ts-ignore
 import likeBtn from './Vector.svg';
-// add props slug
+
 const Article: React.FC<ArticleType> = ({
+  slug,
   title,
-  body,
-  updateAt,
+  description,
+  updatedAt,
   favoritesCount,
   tagList,
   author: { username, image },
@@ -17,7 +21,9 @@ const Article: React.FC<ArticleType> = ({
     <article className="article">
       <div className="article-info">
         <div className="article-info__header">
-          <h5 className="article-info__title">{title}</h5>
+          <Link to={`articles/${slug}`}>
+            <h5 className="article-info__title">{title}</h5>
+          </Link>
           <span className="article-info__likes">
             <img
               src={likeBtn}
@@ -30,12 +36,16 @@ const Article: React.FC<ArticleType> = ({
         <div className="tags">
           <Tags tagList={tagList} />
         </div>
-        <div className="article-info__desc">{body}</div>
+        <div className="article-info__desc">
+          <p className="article-info__text">{description}</p>
+        </div>
       </div>
       <div className="article-user">
         <div className="user-info">
           <h6 className="user-info__name">{username}</h6>
-          <p className="user-info__update">{updateAt}</p>
+          <p className="user-info__update">
+            {format(new Date(updatedAt), 'MMMM dd, yyyy')}
+          </p>
         </div>
         <div className="article-user__photo">
           <img src={image} alt={username} className="article-user__img" />

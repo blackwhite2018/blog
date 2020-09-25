@@ -8,8 +8,9 @@ export interface Article {
   slug: string;
   title: string;
   body: string;
+  description: string;
   createdAt: string;
-  updateAt: string;
+  updatedAt: string;
   favoritesCount: number;
   tagList: string[];
 }
@@ -25,4 +26,8 @@ export interface TagsTypes {
 
 export interface TagTypesProps {
   value: string;
+}
+
+export interface ArticleViewMatchParamsType {
+  slug: string;
 }
