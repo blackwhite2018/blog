@@ -1,26 +1,28 @@
 {
   "files": {
-    "main.css": "/blog/static/css/main.c50b2b25.chunk.css",
-    "main.js": "/blog/static/js/main.c3f930aa.chunk.js",
-    "main.js.map": "/blog/static/js/main.c3f930aa.chunk.js.map",
+    "main.css": "/blog/static/css/main.5bbbe88f.chunk.css",
+    "main.js": "/blog/static/js/main.047e56a3.chunk.js",
+    "main.js.map": "/blog/static/js/main.047e56a3.chunk.js.map",
     "runtime-main.js": "/blog/static/js/runtime-main.1dc37962.js",
     "runtime-main.js.map": "/blog/static/js/runtime-main.1dc37962.js.map",
     "static/css/2.cd846464.chunk.css": "/blog/static/css/2.cd846464.chunk.css",
-    "static/js/2.a7d38276.chunk.js": "/blog/static/js/2.a7d38276.chunk.js",
-    "static/js/2.a7d38276.chunk.js.map": "/blog/static/js/2.a7d38276.chunk.js.map",
+    "static/js/2.06b77110.chunk.js": "/blog/static/js/2.06b77110.chunk.js",
+    "static/js/2.06b77110.chunk.js.map": "/blog/static/js/2.06b77110.chunk.js.map",
     "index.html": "/blog/index.html",
-    "precache-manifest.f2aa7f425fdf05810c7aec2c7dba27cb.js": "/blog/precache-manifest.f2aa7f425fdf05810c7aec2c7dba27cb.js",
+    "precache-manifest.a76c09d1e05446f9e5290ec7879510d5.js": "/blog/precache-manifest.a76c09d1e05446f9e5290ec7879510d5.js",
     "service-worker.js": "/blog/service-worker.js",
     "static/css/2.cd846464.chunk.css.map": "/blog/static/css/2.cd846464.chunk.css.map",
-    "static/css/main.c50b2b25.chunk.css.map": "/blog/static/css/main.c50b2b25.chunk.css.map",
-    "static/js/2.a7d38276.chunk.js.LICENSE.txt": "/blog/static/js/2.a7d38276.chunk.js.LICENSE.txt",
-    "static/media/Vector.svg": "/blog/static/media/Vector.d17fcd0b.svg"
+    "static/css/main.5bbbe88f.chunk.css.map": "/blog/static/css/main.5bbbe88f.chunk.css.map",
+    "static/js/2.06b77110.chunk.js.LICENSE.txt": "/blog/static/js/2.06b77110.chunk.js.LICENSE.txt",
+    "static/media/Rectangle 1.svg": "/blog/static/media/Rectangle 1.1197b293.svg",
+    "static/media/Vector.svg": "/blog/static/media/Vector.d17fcd0b.svg",
+    "static/media/index.css": "/blog/static/media/check.b982534d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1dc37962.js",
     "static/css/2.cd846464.chunk.css",
-    "static/js/2.a7d38276.chunk.js",
-    "static/css/main.c50b2b25.chunk.css",
-    "static/js/main.c3f930aa.chunk.js"
+    "static/js/2.06b77110.chunk.js",
+    "static/css/main.5bbbe88f.chunk.css",
+    "static/js/main.047e56a3.chunk.js"
   ]
 }
