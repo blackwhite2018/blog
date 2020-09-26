@@ -32,6 +32,7 @@
     "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.8.6",
     "react-markdown": "^4.3.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
@@ -51,6 +52,7 @@
     "lint": "eslint ./src/**/*.{js,ts,tsx,jsx}",
     "lint:fix": "eslint ./src/**/*.{js,ts,tsx,jsx} --fix",
     "format": "prettier --write './src/**/*.(js|ts|tsx|jsx|html|css|json)'",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

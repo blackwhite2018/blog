@@ -31,3 +31,23 @@ export interface TagTypesProps {
 export interface ArticleViewMatchParamsType {
   slug: string;
 }
+
+export interface IFormSignUpSubmit {
+  username: string;
+  email: string;
+  password: string;
+  'repeat-password': string;
+  agree: boolean;
+}
+
+export interface IFormSignInSubmit {
+  email: string;
+  password: string;
+}
+
+export interface IFormProfileSubmit {
+  username: string;
+  email: string;
+  password: string;
+  url: string;
+}

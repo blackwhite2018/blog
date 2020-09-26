@@ -1,3 +1,19 @@
 .article-list {
   width: 100%;
 }
+
+.ant-pagination {
+  margin-bottom: 18px !important;
+}
+
+.ant-pagination-item-active {
+  background: #1890ff !important;
+}
+
+.ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+.ant-pagination-options {
+  display: none !important;
+}

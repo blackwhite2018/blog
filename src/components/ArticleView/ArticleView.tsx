@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 import { format } from 'date-fns';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -77,7 +77,7 @@ const ArticleView: React.FC = () => {
           <p className="article-info__text">{description}</p>
         </div>
         <div className="article-info__desc">
-          <ReactMarkdown source={body} />
+          <ReactMarkdown source={body} escapeHtml={false} />
         </div>
       </div>
       <div className="article-user">

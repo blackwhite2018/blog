@@ -30,6 +30,9 @@
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-useless-escape": "off",
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/interface-name-prefix": "off"
   }
 }
