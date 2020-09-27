@@ -7,6 +7,9 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Tag from './Tag';
 import Tags from './Tags';
+import NewArticle from './NewArticle';
+import ArticleEdit from './ArticleEdit';
+import ArticleForm from './ArticleForm';
 
 export {
   App,
@@ -18,4 +21,7 @@ export {
   SignUp,
   Tag,
   Tags,
+  NewArticle,
+  ArticleEdit,
+  ArticleForm,
 };

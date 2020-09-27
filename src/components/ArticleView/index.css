@@ -1,0 +1,20 @@
+.btn-article-delete {
+  border: 1px solid #f5222d;
+  color: #f5222d;
+  margin-right: 12px;
+}
+
+.btn-article-edit {
+  border: 1px solid #52c41a;
+  color: #52c41a;
+}
+
+.btn-article-delete,
+.btn-article-edit {
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 6px 17px;
+}

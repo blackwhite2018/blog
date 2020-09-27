@@ -40,15 +40,17 @@ const Article: React.FC<ArticleType> = ({
           <p className="article-info__text">{description}</p>
         </div>
       </div>
-      <div className="article-user">
-        <div className="user-info">
-          <h6 className="user-info__name">{username}</h6>
-          <p className="user-info__update">
-            {format(new Date(updatedAt), 'MMMM dd, yyyy')}
-          </p>
-        </div>
-        <div className="article-user__photo">
-          <img src={image} alt={username} className="article-user__img" />
+      <div className="article-container">
+        <div className="article-user">
+          <div className="user-info">
+            <h6 className="user-info__name">{username}</h6>
+            <p className="user-info__update">
+              {format(new Date(updatedAt), 'MMMM dd, yyyy')}
+            </p>
+          </div>
+          <div className="article-user__photo">
+            <img src={image} alt={username} className="article-user__img" />
+          </div>
         </div>
       </div>
     </article>

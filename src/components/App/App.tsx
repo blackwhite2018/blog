@@ -11,9 +11,18 @@ import {
   articleUpdateAsync,
   userLogOut,
   userLogInAuto,
+  // fetchTagsLoad,
 } from '../../redux/actions/actions';
 
-import { ArticleList, ArticleView, SignIn, SignUp, Profile } from '..';
+import {
+  ArticleList,
+  ArticleView,
+  SignIn,
+  SignUp,
+  Profile,
+  NewArticle,
+  ArticleEdit,
+} from '..';
 import './index.css';
 // @ts-ignore
 import userPhotoDefault from './Rectangle 1.svg';
@@ -27,6 +36,7 @@ const App: React.FC = () => {
   const user = useSelector((state: any) => state.user.user);
 
   useEffect(() => {
+    // fetchTagsLoad(dispatch);
     userLogInAuto(dispatch);
   }, []);
 
@@ -106,10 +116,12 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/" component={ArticleList} exact />
             <Route path="/articles" component={ArticleList} exact />
-            <Route path="/articles/:slug" component={ArticleView} />
+            <Route path="/articles/:slug" exact component={ArticleView} />
+            <Route path="/articles/:slug/edit" exact component={ArticleEdit} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/profile" component={Profile} />
+            <Route path="/new-article" component={NewArticle} />
 
             <Redirect to="/" />
           </Switch>

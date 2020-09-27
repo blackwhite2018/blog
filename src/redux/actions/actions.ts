@@ -8,6 +8,7 @@ import {
   FETCH_USER_AUTHENTICATION_ERROR,
   FETCH_USER_AUTHORIZED,
   USER_LOGOUT,
+  ARTICLE_UPDATE_NEW,
 } from './actionTypes';
 import { Article, ArticleReducerAction } from '../../types';
 
@@ -133,7 +134,7 @@ export const userUpdateProfile = (
   })
     .then(response => response.json())
     .then(user => {
-      dispatch(userAuthenticationSync(user));
+      if (user.user) dispatch(userAuthenticationSync(user));
     })
     .catch(console.error);
 };
@@ -164,3 +165,77 @@ export const userLogInAuto = (dispatch: Function) => {
     console.error(e);
   }
 };
+
+export const updateArticle = (article: any) => ({
+  type: ARTICLE_UPDATE_NEW,
+  payload: article,
+});
+
+export const fetchArticalCreate = (
+  dispatch: Function,
+  newArticle: any,
+  token: string
+) => {
+  fetch('https://conduit.productionready.io/api/articles', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Token ${token}`,
+    },
+    body: JSON.stringify(newArticle),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.article) dispatch(updateArticle(data.article));
+    })
+    .catch(console.error);
+};
+
+export const fetchArticalUpdate = (
+  dispatch: Function,
+  slug: string,
+  newArtical: any,
+  token: string
+) => {
+  fetch(`https://conduit.productionready.io/api/articles/${slug}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Token ${token}`,
+    },
+    body: JSON.stringify(newArtical),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(2, data);
+    })
+    .catch(console.error);
+};
+
+export const fetchArticalDelete = (slug: string, token: string) => {
+  fetch(`https://conduit.productionready.io/api/articles/${slug}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Token ${token}`,
+    },
+  }).catch(console.error);
+};
+
+// export const fetchTagsLoadSync = (tags: string[]) => ({
+//   type: FETCH_TAGS_LOAD,
+//   payload: tags,
+// });
+
+// export const fetchTagsLoad = (dispatch: Function) => {
+//   fetch(
+//     'https://conduit.productionready.io/api/tags'
+//   )
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(1, data);
+
+//       dispatch(fetchTagsLoadSync(data.tags));
+//     })
+//     .catch(console.error)
+// };
