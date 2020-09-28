@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { fetchArticalUpdate } from '../../redux/actions/actions';
+import { fetchArticalUpdate } from '../../../redux/actions';
+import { ArticleEditParams, IArticle } from '../../../types';
+import { ArticleForm } from '../..';
 
-import { ArticleForm } from '..';
-
-const ArticleEdit = () => {
+const ArticleEdit: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { slug }: any = useParams();
+  const { slug }: ArticleEditParams = useParams();
   const token = useSelector((state: any) => state.user.user.token);
   const isAuthentication = useSelector<boolean>(
     (state: any) => state.user.isAuthentication
   );
   const article = useSelector((state: any) =>
-    state.articles.articles.find((article: any) => article.slug === slug)
+    state.articles.articles.find((article: IArticle) => article.slug === slug)
   );
   const [tags, setTags] = useState<string[]>([]);
 
-  const onSubmit = (value: any) => {
+  const onSubmit = (value: IArticle): void => {
     const newArticle = {
       article: { ...value },
     };

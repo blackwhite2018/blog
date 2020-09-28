@@ -11,8 +11,7 @@ import {
   articleUpdateAsync,
   userLogOut,
   userLogInAuto,
-  // fetchTagsLoad,
-} from '../../redux/actions/actions';
+} from '../../../redux/actions';
 
 import {
   ArticleList,
@@ -22,21 +21,21 @@ import {
   Profile,
   NewArticle,
   ArticleEdit,
-} from '..';
+} from '../..';
 import './index.css';
 // @ts-ignore
 import userPhotoDefault from './Rectangle 1.svg';
+import { IUserProfile, IStore } from '../../../types';
 
 const App: React.FC = () => {
-  const dispatch = useDispatch<Function>();
-  const page: number = useSelector((state: any) => state.articles.page);
-  const isAuthentication = useSelector(
-    (state: any) => state.user.isAuthentication
+  const dispatch: Function = useDispatch();
+  const page: number = useSelector((state: IStore) => state.articles.page);
+  const isAuthentication: boolean = useSelector(
+    (state: IStore) => state.user.isAuthentication
   );
-  const user = useSelector((state: any) => state.user.user);
+  const user: IUserProfile = useSelector((state: any) => state.user.user);
 
   useEffect(() => {
-    // fetchTagsLoad(dispatch);
     userLogInAuto(dispatch);
   }, []);
 
@@ -115,9 +114,9 @@ const App: React.FC = () => {
         <main className="main">
           <Switch>
             <Route path="/" component={ArticleList} exact />
-            <Route path="/articles" component={ArticleList} exact />
+            <Route path="/articles" exact component={ArticleList} />
             <Route path="/articles/:slug" exact component={ArticleView} />
-            <Route path="/articles/:slug/edit" exact component={ArticleEdit} />
+            <Route path="/articles/:slug/edit" component={ArticleEdit} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/profile" component={Profile} />

@@ -34,6 +34,11 @@
     "no-useless-escape": "off",
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/interface-name-prefix": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "no-case-declarations": "off"
   }
 }

@@ -3,7 +3,7 @@ export interface ArticleAuthor {
   image: string;
 }
 
-export interface Article {
+export interface IArticle {
   author: ArticleAuthor;
   slug: string;
   title: string;
@@ -12,12 +12,13 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   favoritesCount: number;
+  favorited: boolean;
   tagList: string[];
 }
 
 export interface ArticleReducerAction {
   type: string;
-  payload: Article[];
+  payload: IArticle[];
 }
 
 export interface TagsTypes {
@@ -50,4 +51,44 @@ export interface IFormProfileSubmit {
   email: string;
   password: string;
   url: string;
+}
+
+export interface IUserProfile {
+  bio: string | null;
+  createdAt: string;
+  updatesAt: string;
+  email: string;
+  id: number;
+  image: string | null;
+  token: string;
+  username: string;
+}
+
+export interface IUserReducer {
+  user: IUserProfile | {};
+  isAuthentication: boolean;
+  isAuthenticationOkey: boolean;
+  isRegisterOkey: boolean;
+}
+
+export interface IArticleReducer {
+  page: number;
+  totalPage: number;
+  articles: IArticle[];
+  isLoading: boolean;
+  tags: string[];
+}
+
+export interface IStore {
+  user: IUserReducer;
+  articles: IArticleReducer;
+}
+
+export interface ArticleEditParams {
+  slug: string;
+}
+
+export interface LikeBtnProps {
+  favorited: boolean;
+  handleLikeArticle: () => void;
 }

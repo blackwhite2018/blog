@@ -17,29 +17,31 @@ const ArticleForm: React.FC<any> = ({
   const [newTag, setNewTag] = useState<string>('');
   const [addedTag, setAddedTag] = useState<boolean>(true);
 
-  const handleRemoveTag = (evt: React.MouseEvent<HTMLInputElement>) => {
+  const handleRemoveTag = (evt: React.MouseEvent<HTMLInputElement>): void => {
     const id = Number(evt.currentTarget.dataset.id);
     const newTags: string[] = [...tags];
     newTags.splice(id, 1);
     setTags(newTags);
   };
 
-  const handleChangeTags = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTags = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     const id = Number(evt.currentTarget.dataset.id);
     const newTags: string[] = [...tags];
     newTags[id] = evt.currentTarget.value;
     setTags(newTags);
   };
 
-  const handleChangeNewTag = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeNewTag = (
+    evt: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setNewTag(evt.currentTarget.value);
   };
 
-  const handleToggleAddedTag = () => {
+  const handleToggleAddedTag = (): void => {
     setAddedTag(false);
   };
 
-  const handleAddTag = () => {
+  const handleAddTag = (): void => {
     const newTags: string[] = [...tags];
     newTags.push(newTag);
     setTags(newTags);

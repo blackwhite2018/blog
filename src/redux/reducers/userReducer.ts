@@ -5,16 +5,20 @@ import {
   FETCH_USER_AUTHORIZED,
   USER_LOGOUT,
 } from '../actions/actionTypes';
+import { IUserReducer } from '../../types';
 
-const initialState = {
+const initialState: IUserReducer = {
   user: {},
   isAuthentication: false,
   isAuthenticationOkey: true,
   isRegisterOkey: true,
 };
 
-const userReducer = (state = initialState, { type, payload }: any) => {
-  const newState = { ...state };
+const userReducer = (
+  state = initialState,
+  { type, payload }: any
+): IUserReducer => {
+  const newState: IUserReducer = { ...state };
 
   switch (type) {
     case FETCH_USER_AUTHENTICATION:

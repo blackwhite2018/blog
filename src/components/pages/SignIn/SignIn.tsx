@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { userAuthentication } from '../../redux/actions/actions';
+import { userAuthentication } from '../../../redux/actions';
 
-import { IFormSignInSubmit } from '../../types';
+import { IFormSignInSubmit } from '../../../types';
 import './index.css';
 
 const SignIn: React.FC = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const isAuthenticationOkey = useSelector(
+  const dispatch: Function = useDispatch();
+  const isAuthenticationOkey: boolean = useSelector(
     (state: any) => state.user.isAuthenticationOkey
   );
-  const isAuthentication = useSelector(
+  const isAuthentication: boolean = useSelector(
     (state: any) => state.user.isAuthentication
   );
   const { register, handleSubmit, errors } = useForm<IFormSignInSubmit>();
@@ -25,11 +25,13 @@ const SignIn: React.FC = () => {
     userAuthentication(dispatch, user);
   };
 
-  if (isAuthentication) history.push('/');
-
   useEffect(() => {
     if (!isAuthenticationOkey) history.push('/');
   }, [isAuthenticationOkey]);
+
+  useEffect(() => {
+    if (isAuthentication) history.push('/');
+  }, [isAuthentication]);
 
   return (
     <form action="" onSubmit={handleSubmit(onSubmit)} className="form">

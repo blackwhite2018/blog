@@ -5,18 +5,24 @@ import {
   FETCH_ARTICAL_LOAD,
   ARTICLE_UPDATE_NEW,
   ARTICLE_DELETE,
+  FETCH_ARTICLE_LIKE_FAVORITE_UPDATE,
 } from '../actions/actionTypes';
+import { IArticle, IArticleReducer } from '../../types';
 
-const initialState: any = {
-  page: 0,
+const initialState: IArticleReducer = {
+  page: 1,
   totalPage: 0,
   articles: [],
   isLoading: false,
   tags: [],
 };
 
-const articleReducer = (state = initialState, { type, payload }: any): any => {
-  const newState = { ...state };
+const articleReducer = (
+  state = initialState,
+  { type, payload }: any
+): IArticleReducer => {
+  const newState: IArticleReducer = { ...state };
+
   switch (type) {
     case ARTICLE_UPDATE:
       return Object.assign(newState, { articles: payload });
@@ -34,8 +40,16 @@ const articleReducer = (state = initialState, { type, payload }: any): any => {
       return Object.assign(newState, {
         articles: [payload, ...newState.articles],
       });
-    // case FETCH_TAGS_LOAD:
-    //   return Object.assign(newState, { tags: payload });
+    case FETCH_ARTICLE_LIKE_FAVORITE_UPDATE:
+      const index: number = newState.articles.findIndex(
+        (article: any) => article.slug === payload.slug
+      );
+      if (index !== -1) {
+        const newArticles: IArticle[] = [...newState.articles];
+        newArticles[index] = payload.value;
+        newState.articles = newArticles;
+      }
+      return newState;
     default:
       return newState;
   }

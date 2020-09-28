@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { Article as ArticleType } from '../../types';
-import Tags from '../Tags';
+import { fetchArticleLike } from '../../redux/actions';
+import { IArticle } from '../../types';
+import { Tags, LikeBtn } from '..';
 import './index.css';
-// @ts-ignore
-import likeBtn from './Vector.svg';
 
-const Article: React.FC<ArticleType> = ({
+const Article: React.FC<IArticle> = ({
   slug,
   title,
   description,
   updatedAt,
   favoritesCount,
   tagList,
+  favorited,
   author: { username, image },
 }) => {
+  const [isFavorite, setIsFavorite] = useState<boolean>(favorited);
+  const token: string = useSelector((state: any) => state.user.user.token);
+  const dispatch: Function = useDispatch();
+
+  const handleLikeArticle = () => {
+    setIsFavorite(!isFavorite);
+    fetchArticleLike(dispatch, slug, token, !isFavorite);
+  };
+
   return (
     <article className="article">
       <div className="article-info">
@@ -25,10 +35,9 @@ const Article: React.FC<ArticleType> = ({
             <h5 className="article-info__title">{title}</h5>
           </Link>
           <span className="article-info__likes">
-            <img
-              src={likeBtn}
-              alt="like btn"
-              className="article-info__likes-btn"
+            <LikeBtn
+              favorited={favorited}
+              handleLikeArticle={handleLikeArticle}
             />
             <span className="article-info__likes-count">{favoritesCount}</span>
           </span>

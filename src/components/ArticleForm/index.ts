@@ -1,3 +1,1 @@
-import ArticleForm from './ArticleForm';
-
-export default ArticleForm;
+export { default } from './ArticleForm';

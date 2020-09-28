@@ -1,7 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-import Tag from '../Tag';
+import { Tag } from '..';
 import './index.css';
 import { TagsTypes } from '../../types';
 

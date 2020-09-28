@@ -91,3 +91,7 @@ h6 {
   height: 100%;
   border-radius: 50%;
 }
+
+.article-info__likes-btn--active {
+  background: #ff0707;
+}

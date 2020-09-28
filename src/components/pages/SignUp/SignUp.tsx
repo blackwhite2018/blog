@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { userRegistration } from '../../redux/actions/actions';
+import { userRegistration } from '../../../redux/actions';
 
-import { IFormSignUpSubmit } from '../../types';
+import { IFormSignUpSubmit } from '../../../types';
 import './index.css';
 
 const SignOut: React.FC = () => {
-  const dispatch = useDispatch();
-  const isRegisterOkey = useSelector((state: any) => state.user.isRegisterOkey);
-  const isAuthentication = useSelector(
+  const dispatch: Function = useDispatch();
+  const isRegisterOkey: boolean = useSelector(
+    (state: any) => state.user.isRegisterOkey
+  );
+  const isAuthentication: boolean = useSelector(
     (state: any) => state.user.isAuthentication
   );
   const history = useHistory();
@@ -23,11 +25,13 @@ const SignOut: React.FC = () => {
     userRegistration(dispatch, user);
   };
 
-  if (isAuthentication) history.push('/');
-
   useEffect(() => {
     if (!isRegisterOkey) history.push('/');
   }, [isRegisterOkey]);
+
+  useEffect(() => {
+    if (isAuthentication) history.push('/');
+  }, [isAuthentication]);
 
   return (
     <form action="" onSubmit={handleSubmit(onSubmit)} className="form">

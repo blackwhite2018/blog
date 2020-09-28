@@ -3,20 +3,20 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { userUpdateProfile } from '../../redux/actions/actions';
-import { IFormProfileSubmit } from '../../types';
+import { userUpdateProfile } from '../../../redux/actions';
+import { IFormProfileSubmit } from '../../../types';
 import './index.css';
 
 const Profile: React.FC = () => {
-  const dispatch = useDispatch();
-  const isAuthentication = useSelector(
+  const dispatch: Function = useDispatch();
+  const isAuthentication = useSelector<boolean>(
     (state: any) => state.user.isAuthentication
   );
   const user = useSelector((state: any) => state.user.user);
   const history = useHistory();
   const { handleSubmit, register, errors } = useForm<IFormProfileSubmit>();
 
-  const onSubmit = (value: any) => {
+  const onSubmit = (value: any): void => {
     const newUserData: any = {
       user: {},
     };

@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown/with-html';
 import { format } from 'date-fns';
 import { Spin, Popconfirm } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { fetchArticalDelete } from '../../redux/actions/actions';
-import Tags from '../Tags';
-import {
-  Article as ArticleType,
-  ArticleViewMatchParamsType,
-} from '../../types';
-// @ts-ignore
-import likeBtn from './Vector.svg';
+import { fetchArticalDelete, fetchArticleLike } from '../../../redux/actions';
+import { Tags, LikeBtn } from '../..';
+import { API_URL } from '../../../config';
+import { IArticle, ArticleViewMatchParamsType } from '../../../types';
 import './index.css';
 
-const fetchData = async (url: string): Promise<ArticleType | null> => {
+const fetchData = async (url: string): Promise<IArticle | null> => {
   try {
     const response = await fetch(url);
     const { article } = await response.json();
@@ -28,26 +24,36 @@ const fetchData = async (url: string): Promise<ArticleType | null> => {
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
+const loadData = async (
+  url: string,
+  setArticle: Function,
+  setIsLoading: Function
+): Promise<void> => {
+  const data: IArticle | null = await fetchData(url);
+
+  if (data) {
+    setArticle(data);
+    setIsLoading(true);
+  }
+};
+
 const ArticleView: React.FC = () => {
-  const [article, setArticle] = useState<ArticleType>();
+  const [article, setArticle] = useState<IArticle>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const { slug } = useParams<ArticleViewMatchParamsType>();
   const history = useHistory();
-  const token = useSelector((state: any) => state.user.user.token);
-  const isAuth = useSelector((state: any) => state.user.isAuthentication);
-  const authUsername = useSelector((state: any) => state.user.user.username);
-
-  const loadData = async (url: string): Promise<void> => {
-    const data: ArticleType | null = await fetchData(url);
-
-    if (data) {
-      setArticle(data);
-      setIsLoading(true);
-    }
-  };
+  const dispatch = useDispatch();
+  const token: string = useSelector((state: any) => state.user.user.token);
+  const isAuth: boolean = useSelector(
+    (state: any) => state.user.isAuthentication
+  );
+  const authUsername: string = useSelector(
+    (state: any) => state.user.user.username
+  );
 
   useEffect(() => {
-    loadData(`https://conduit.productionready.io/api/articles/${slug}`);
+    loadData(`${API_URL}/articles/${slug}`, setArticle, setIsLoading);
   }, []);
 
   if (!isLoading) return <Spin indicator={antIcon} />;
@@ -55,6 +61,7 @@ const ArticleView: React.FC = () => {
   const {
     title,
     favoritesCount,
+    favorited,
     tagList,
     description,
     body,
@@ -62,12 +69,17 @@ const ArticleView: React.FC = () => {
     author: { username, image },
   }: any = article;
 
-  function confirm() {
+  const handleLikeArticle = (): void => {
+    setIsFavorite(!favorited);
+    fetchArticleLike(dispatch, slug, token, !favorited);
+  };
+
+  const confirm = (): void => {
     if (article?.slug) {
-      fetchArticalDelete(article.slug, token);
+      fetchArticalDelete(dispatch, article.slug, token);
       history.push('/');
     }
-  }
+  };
 
   return (
     <article className="article">
@@ -75,10 +87,9 @@ const ArticleView: React.FC = () => {
         <div className="article-info__header">
           <h5 className="article-info__title">{title}</h5>
           <span className="article-info__likes">
-            <img
-              src={likeBtn}
-              alt="like btn"
-              className="article-info__likes-btn"
+            <LikeBtn
+              favorited={isFavorite}
+              handleLikeArticle={handleLikeArticle}
             />
             <span className="article-info__likes-count">{favoritesCount}</span>
           </span>
