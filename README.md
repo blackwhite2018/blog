@@ -6,6 +6,6 @@ A blog based on the world of reading API, allows you to authenticate, register a
 
 ## installation
 
-`git clone <url>`
-`npm install`
+`git clone <url>` <br />
+`npm install` <br />
 `npm start` - start dev server
