@@ -22,7 +22,12 @@ const userReducer = (
 
   switch (type) {
     case FETCH_USER_AUTHENTICATION:
-      return Object.assign(newState, { user: payload.user });
+      console.log(2, payload);
+
+      return Object.assign(newState, {
+        user: payload.user,
+        isAuthentication: true,
+      });
     case FETCH_USER_AUTHENTICATION_ERROR:
       return Object.assign(newState, { isAuthenticationOkey: false });
     case FETCH_USER_AUTHORIZED:

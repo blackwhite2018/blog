@@ -44,7 +44,16 @@ export const articlePageUpdate = (page: number) => ({
 
 export const articleUpdateAsync = (dispatch: Function, page: number): void => {
   fetch(`${API_URL}/articles?limit=20&offset=${page * 20}`)
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(data => {
       const { articles, articlesCount } = data;
       dispatch(articleTotalPageUpdate(articlesCount));
@@ -67,7 +76,16 @@ export const fetchArticalUpdate = (
     }),
     body: JSON.stringify(newArtical),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(data => {
       console.log(2, data);
     })
@@ -86,7 +104,16 @@ export const fetchArticalCreate = (
     }),
     body: JSON.stringify(newArticle),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(data => {
       if (data.article) dispatch(updateArticle(data.article));
     })
@@ -104,7 +131,16 @@ export const fetchArticalDelete = (
       Authorization: `Token ${token}`,
     }),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(data => {
       articleUpdateAsync(dispatch, 0);
     })
@@ -123,7 +159,16 @@ export const fetchArticleLike = (
       Authorization: `Token ${token}`,
     }),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(data => {
       if (data.article) dispatch(articleLikeFavoriteUpdate(slug, data.article));
     })

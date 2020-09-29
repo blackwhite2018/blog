@@ -33,7 +33,16 @@ export const userAuthentication = (dispatch: Function, user: any) => {
     headers: API_REQUIRED_HEADERS,
     body: JSON.stringify(user),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(user => {
       if (user.user.token) {
         dispatch(userAuthenticationSync(user));
@@ -56,9 +65,19 @@ export const userRegistration = (dispatch: Function, user: any) => {
     headers: API_REQUIRED_HEADERS,
     body: JSON.stringify(user),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(user => {
       if (user.user.token) {
+        dispatch(userAuthenticationSync(user));
         dispatch(userRegisterError(false));
       } else {
         dispatch(userRegisterError(true));
@@ -86,7 +105,16 @@ export const userUpdateProfile = (
     }),
     body: JSON.stringify(userProfile),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw {
+          name: 'Fetch error',
+          message: 'fetch error',
+        };
+      }
+    })
     .then(user => {
       if (user.user) dispatch(userAuthenticationSync(user));
     })
@@ -106,7 +134,16 @@ export const userLogInAuto = (dispatch: Function) => {
             Authorization: `Token ${token}`,
           }),
         })
-          .then(response => response.json())
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw {
+                name: 'Fetch error',
+                message: 'fetch error',
+              };
+            }
+          })
           .then(user => {
             dispatch(userAuthenticationSync(user));
             dispatch(userAuthorized(true));

@@ -39,6 +39,8 @@
     "@typescript-eslint/no-unused-vars": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "nonblock-statement-body-position": "off",
+    "no-else-return": "off"
   }
 }

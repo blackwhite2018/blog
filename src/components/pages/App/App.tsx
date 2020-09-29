@@ -29,9 +29,10 @@ import { IUserProfile, IStore } from '../../../types';
 
 const App: React.FC = () => {
   const dispatch: Function = useDispatch();
-  const page: number = useSelector((state: IStore) => state.articles.page);
+  const page: number = useSelector((state: any) => state.articles.page);
+  const state = useSelector((state: any) => state);
   const isAuthentication: boolean = useSelector(
-    (state: IStore) => state.user.isAuthentication
+    (state: any) => state.user.isAuthentication
   );
   const user: IUserProfile = useSelector((state: any) => state.user.user);
 
@@ -51,7 +52,6 @@ const App: React.FC = () => {
 
   if (isAuthentication) {
     const { username, image } = user;
-
     Controls = (
       <>
         <Link to="/new-article">

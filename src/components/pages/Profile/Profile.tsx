@@ -22,8 +22,9 @@ const Profile: React.FC = () => {
     };
 
     for (const key of Object.keys(value)) {
-      if (user[key] !== value[key] && value[key])
+      if (user[key] !== value[key] && value[key]) {
         newUserData.user[key] = value[key];
+      }
     }
 
     userUpdateProfile(dispatch, newUserData, user.token);
