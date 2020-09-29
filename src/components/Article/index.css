@@ -41,6 +41,12 @@ h6 {
   font-size: 20px;
   line-height: 28px;
   margin-right: 13px;
+  filter: filter 0.7s;
+}
+
+.article-info__title:hover,
+.article-info__title:focus {
+  filter: hue-rotate(30deg);
 }
 
 .article-info__text {

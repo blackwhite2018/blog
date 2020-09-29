@@ -39,6 +39,11 @@ body {
   color: rgba(0, 0, 0, 0.85);
 }
 
+.header__title:hover,
+.header__title:focus {
+  color: rgb(43, 125, 89);
+}
+
 .controls {
   font-size: 18px;
   line-height: 28px;
@@ -57,6 +62,25 @@ body {
 
 .btn-signin {
   color: rgba(0, 0, 0, 0.85);
+}
+
+.btn-signin,
+.btn-signup,
+.btn-logout,
+.btn-create-article {
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.btn-signin:hover,
+.btn-signup:hover,
+.btn-signin:focus,
+.btn-signup:focus,
+.btn-logout:hover,
+.btn-logout:focus,
+.btn-create-article:hover,
+.btn-create-article:focus {
+  transform: rotate(20deg);
 }
 
 .controls__btn-signin {

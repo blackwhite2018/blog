@@ -25,7 +25,7 @@ import {
 import './index.css';
 // @ts-ignore
 import userPhotoDefault from './Rectangle 1.svg';
-import { IUserProfile, IStore } from '../../../types';
+import { IUserProfile } from '../../../types';
 
 const App: React.FC = () => {
   const dispatch: Function = useDispatch();
