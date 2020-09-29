@@ -30,7 +30,6 @@ import { IUserProfile, IStore } from '../../../types';
 const App: React.FC = () => {
   const dispatch: Function = useDispatch();
   const page: number = useSelector((state: any) => state.articles.page);
-  const state = useSelector((state: any) => state);
   const isAuthentication: boolean = useSelector(
     (state: any) => state.user.isAuthentication
   );

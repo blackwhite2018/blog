@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { Alert } from 'antd';
 import { userAuthentication } from '../../../redux/actions';
 
 import { IFormSignInSubmit } from '../../../types';
 import './index.css';
+
+let isAuthRet = false;
 
 const SignIn: React.FC = () => {
   const history = useHistory();
@@ -30,6 +33,7 @@ const SignIn: React.FC = () => {
   }, [isAuthenticationOkey]);
 
   useEffect(() => {
+    isAuthRet = true;
     if (isAuthentication) history.push('/');
   }, [isAuthentication]);
 
@@ -70,6 +74,9 @@ const SignIn: React.FC = () => {
         )}
       </label>
       <input type="submit" className="form__submit" value="Login" />
+      {isAuthRet && (
+        <p className="form__input-error">wrong login or password</p>
+      )}
       <p className="no-have-account">
         Don\'t have an account?
         <Link to="/sign-up">

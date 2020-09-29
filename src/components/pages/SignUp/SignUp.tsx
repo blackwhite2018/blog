@@ -7,6 +7,8 @@ import { userRegistration } from '../../../redux/actions';
 import { IFormSignUpSubmit } from '../../../types';
 import './index.css';
 
+let isAuthRet: boolean = false;
+
 const SignOut: React.FC = () => {
   const dispatch: Function = useDispatch();
   const isRegisterOkey: boolean = useSelector(
@@ -26,6 +28,7 @@ const SignOut: React.FC = () => {
   };
 
   useEffect(() => {
+    isAuthRet = true;
     if (!isRegisterOkey) history.push('/');
   }, [isRegisterOkey]);
 
@@ -133,6 +136,7 @@ const SignOut: React.FC = () => {
         </span>
       </label>
       <input type="submit" className="form__submit" value="Create" />
+      {isAuthRet && <p className="form__input-error">Failed to register</p>}
       <p className="already-account">
         Already have an account?
         <Link to="/sign-in">
